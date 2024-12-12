@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.botir.newsapp.ui.splash.SplashScreen"
+        android:label="screen_splash"
+        tools:layout="@layout/screen_splash">
+        <action
+            android:id="@+id/action_splashScreen_to_mainScreen"
+            app:destination="@id/mainScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.botir.newsapp.ui.main.MainScreen"
+        android:label="screen_main"
+        tools:layout="@layout/screen_main">
+        <action
+            android:id="@+id/action_mainScreen_to_detailScreen"
+            app:destination="@id/detailScreen" />
+        <action
+            android:id="@+id/action_mainScreen_to_allNews"
+            app:destination="@id/allNews" />
+        <action
+            android:id="@+id/action_mainScreen_to_detailScreenSave"
+            app:destination="@id/detailScreenSave" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailScreen"
+        android:name="uz.botir.newsapp.ui.detail.DetailScreen"
+        android:label="screen_detail"
+        tools:layout="@layout/screen_detail" >
+        <argument
+            android:name="article"
+            app:argType="uz.botir.newsapp.core.model.tophedline.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/allNews"
+        android:name="uz.botir.newsapp.ui.allnews.AllNewsScreen"
+        android:label="AllNews" />
+    <fragment
+        android:id="@+id/detailScreenSave"
+        android:name="uz.botir.newsapp.ui.detail_save.DetailScreenSave"
+        android:label="screen_detail_save"
+        tools:layout="@layout/screen_detail_save" >
+        <argument
+            android:name="article"
+            app:argType="uz.botir.newsapp.core.db.NewsEntity" />
+    </fragment>
+</navigation>
